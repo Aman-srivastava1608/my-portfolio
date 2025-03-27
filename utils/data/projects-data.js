@@ -1,11 +1,11 @@
 export const projectsData = [
     {
         id: 1,
-        name: 'Chat Application',
-        description: "Built a real-time chat application using React for the frontend, Node.js for the backend, and MongoDB for data storage. Implemented socket.io for seamless real-time communication between users.",
-        tools: ['React', 'Node.js', 'MongoDB', 'Socket.io', 'Express'],
+        name: 'Food Delivery Website',
+        description: 'Built a food delivery platform using React and Node.js. Integrated MySQL for database management, enabled role-based authentication, and added payment gateway integration.',
+        tools: ['React', 'Node.js', 'MySQL', 'Express', 'Bootstrap'],
         role: 'Full Stack Developer',
-        code: 'https://github.com/aman/chat-app',
+        code: 'https://github.com/aman/food-delivery',
         demo: '',
     },
     {
@@ -17,13 +17,15 @@ export const projectsData = [
         code: 'https://github.com/aman/ecommerce-app',
         demo: '',
     },
+
     {
+        
         id: 3,
-        name: 'Food Delivery Website',
-        description: 'Built a food delivery platform using React and Node.js. Integrated MySQL for database management, enabled role-based authentication, and added payment gateway integration.',
-        tools: ['React', 'Node.js', 'MySQL', 'Express', 'Bootstrap'],
+        name: 'Chat Application',
+        description: "Built a real-time chat application using React for the frontend, Node.js for the backend, and MongoDB for data storage. Implemented socket.io for seamless real-time communication between users.",
+        tools: ['React', 'Node.js', 'MongoDB', 'Socket.io', 'Express'],
         role: 'Full Stack Developer',
-        code: 'https://github.com/aman/food-delivery',
+        code: 'https://github.com/aman/chat-app',
         demo: '',
     },
     {
