@@ -12,6 +12,7 @@ function ContactForm() {
   const [userInput, setUserInput] = useState({
     name: "",
     email: "",
+    phone: "",
     message: "",
   });
 
@@ -35,19 +36,17 @@ function ContactForm() {
 
     try {
       setIsLoading(true);
-      const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_APP_URL}/api/contact`,
-        userInput
-      );
+      await axios.post("/api/contact", userInput);
 
       toast.success("Message sent successfully!");
       setUserInput({
         name: "",
         email: "",
+        phone: "",
         message: "",
       });
     } catch (error) {
-      toast.error(error?.response?.data?.message);
+      toast.error(error?.response?.data?.message || "Failed to send message.");
     } finally {
       setIsLoading(false);
     };
@@ -87,6 +86,17 @@ function ContactForm() {
               }}
             />
             {error.email && <p className="text-sm text-red-400">Please provide a valid email!</p>}
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label className="text-base">Your Phone Number: </label>
+            <input
+              className="bg-[#10172d] w-full border rounded-md border-[#353a52] focus:border-[#16f2b3] ring-0 outline-0 transition-all duration-300 px-3 py-2"
+              type="tel"
+              maxLength="20"
+              value={userInput.phone}
+              onChange={(e) => setUserInput({ ...userInput, phone: e.target.value })}
+            />
           </div>
 
           <div className="flex flex-col gap-2">
