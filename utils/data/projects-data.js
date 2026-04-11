@@ -9,7 +9,7 @@ export const projectsData = [
         demo: '',
     },
     {
-        id: 2,
+        id: 3,
         name: 'Research Brief Generator',
         description: 'Built a full-stack web application that converts 1-10 web sources into a structured research brief using LLM-assisted synthesis, scraping, database storage, and health monitoring.',
         tools: ['React', 'ViteJS', 'Node.js', 'Express', 'PostgreSQL'],
@@ -18,12 +18,21 @@ export const projectsData = [
         demo: 'https://research-6a74.onrender.com',
     },
     {
-        id: 3,
+        id: 4,
         name: 'Portfolio Website',
-        description: "Created a professional portfolio showcasing my skills, projects, and contact information. Built using HTML, CSS, and JavaScript to create a responsive and modern design.",
-        tools: ['HTML', 'CSS', 'JavaScript'],
+        description: 'Created a modern developer portfolio with responsive sections, a contact API, and an AI chatbot for quick visitor interactions.',
+        tools: ['Next.js', 'React', 'Tailwind CSS', 'OpenAI API'],
         role: 'Front-End Developer',
         code: 'https://github.com/aman/portfolio',
+        demo: '',
+    },
+    {
+        id: 5,
+        name: 'Food Delivery App',
+        description: 'Built a full-stack food delivery platform with restaurant browsing, cart management, order placement, and an admin flow for menu updates.',
+        tools: ['Next.js', 'Node.js', 'Express', 'MySQL', 'Tailwind CSS'],
+        role: 'Full Stack Developer',
+        code: '',
         demo: '',
     }
 ];
