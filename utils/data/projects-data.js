@@ -34,6 +34,21 @@ export const projectsData = [
         role: 'Full Stack Developer',
         code: '',
         demo: '',
+    },
+    {
+        id: 6,
+        name: 'AAA Fitness Gym',
+        description: 'Customized a responsive gym website showcasing training classes, gym information, a media gallery, and contact details for a local fitness business.',
+        tools: ['HTML', 'CSS', 'JavaScript'],
+        role: 'Front-End Developer',
+        code: '',
+        demo: '',
+        image: '/projects/aaa-fitness.png',
+        details: {
+            challenge: 'Present a local gym clearly online and make training information and contact details easy for prospective members to find.',
+            approach: 'Customized a responsive HTML, CSS, and JavaScript website with gym information, training categories, gallery interactions, and contact sections.',
+            features: ['Gym introduction and training classes', 'Photo and video gallery', 'Responsive navigation and contact information'],
+        },
     }
 ];
 

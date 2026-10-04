@@ -1,16 +1,28 @@
 import Script from "next/script";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Footer from "./components/footer";
-import ScrollToTop from "./components/helper/scroll-to-top";
-import Navbar from "./components/navbar";
-import "./css/card.scss";
+
 import "./css/globals.scss";
+import "./css/premium.scss";
+import "./css/elevated.scss";
 
 export const metadata = {
-  title: "Portfolio of Aman - Software Developer",
+  title: "Aman Kumar — Full Stack Developer",
   description:
-    "This is the portfolio of Aman Kumar. I am a full stack developer and a self taught developer. I love to learn new things and I am always open to collaborating with others. I am a quick learner and I am always looking for new challenges.",
+    "Explore Aman Kumar's full stack development portfolio: responsive interfaces, research tools, and practical web applications built with React, Next.js, Node.js, and SQL.",
+  applicationName: "Aman Kumar Portfolio",
+  authors: [{ name: "Aman Kumar" }],
+  openGraph: {
+    title: "Aman Kumar | Full Stack Developer",
+    description: "Thoughtful code. Meaningful digital experiences. Explore my work and let's build something together.",
+    type: "website",
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary",
+    title: "Aman Kumar | Full Stack Developer",
+    description: "Web applications built with purpose and crafted with care.",
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -19,6 +31,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+        <noscript><style>{".motion-reveal,.cinematic-copy>*,.headline-line>span,.portrait-stage{opacity:1!important;transform:none!important}"}</style></noscript>
         {gtmId ? (
           <Script
             id="google-tag-manager"
@@ -35,12 +48,7 @@ export default function RootLayout({ children }) {
           />
         ) : null}
         <ToastContainer />
-        <main className="min-h-screen relative mx-auto px-6 sm:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem] text-white">
-          <Navbar />
-          {children}
-          <ScrollToTop />
-        </main>
-        <Footer />
+        {children}
       </body>
     </html>
   );

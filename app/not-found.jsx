@@ -1,21 +1,15 @@
-// @flow strict
-
 import Link from "next/link";
+import { FiArrowUpRight } from "react-icons/fi";
 
-function page() {
+export default function NotFound() {
   return (
-    <div className="flex flex-col items-center justify-center h-screen text-center">
-      <h1 className="text-6xl font-bold text-gray-800 dark:text-gray-100">404</h1>
-      <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">Page Not Found</p>
-      <p className="mt-2 text-gray-500 dark:text-gray-400">Sorry, the page you are looking for does not exist.</p>
-      <Link className="mt-5 flex items-center gap-1 hover:gap-3 rounded-full bg-gradient-to-r from-pink-500 to-violet-600 px-3 md:px-8 py-3 text-center text-xs md:text-sm font-medium uppercase tracking-wider text-white no-underline transition-all duration-200 ease-out hover:text-white hover:no-underline md:font-semibold"
-        role="button" 
-        href="/"
-      >
-        Go to Home
-      </Link>
-    </div>
+    <main className="not-found-page">
+      <Link className="wordmark" href="/" aria-label="Aman Kumar home">Aman Kumar</Link>
+      <div className="not-found-art" aria-hidden="true">404</div>
+      <p className="eyebrow">A SMALL DETOUR</p>
+      <h1>This page took<br />a different path.</h1>
+      <p>The page you're looking for isn't here.<br />There's plenty to explore back at the portfolio.</p>
+      <Link className="button primary" href="/">Back to the portfolio <FiArrowUpRight /></Link>
+    </main>
   );
-};
-
-export default page;
+}

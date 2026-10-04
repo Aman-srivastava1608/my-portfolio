@@ -1,10 +1,14 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
-const generateEmailTemplate = (name, email, phone, userMessage) => `
+const inquiryTypes = new Set(['New project', 'Existing project update', 'Other enquiry']);
+const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character]));
+
+const generateEmailTemplate = (name, email, phone, userMessage, requestType) => `
   <div style="font-family: Arial, sans-serif; color: #333; padding: 20px; background-color: #f4f4f4;">
     <div style="max-width: 600px; margin: auto; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
       <h2 style="color: #007BFF;">New Portfolio Message</h2>
+      <p><strong>Enquiry:</strong> ${requestType}</p>
       <p><strong>Name:</strong> ${name}</p>
       <p><strong>Email:</strong> ${email}</p>
       <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
@@ -17,7 +21,7 @@ const generateEmailTemplate = (name, email, phone, userMessage) => `
   </div>
 `;
 
-async function sendEmail({ name, email, phone, message }) {
+async function sendEmail({ name, email, phone, message, requestType }) {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     host: 'smtp.gmail.com',
@@ -32,9 +36,9 @@ async function sendEmail({ name, email, phone, message }) {
   const mailOptions = {
     from: `"Portfolio Contact" <${process.env.EMAIL_ADDRESS}>`,
     to: process.env.EMAIL_ADDRESS,
-    subject: `New Message From ${name}`,
-    text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\n\nMessage:\n${message}`,
-    html: generateEmailTemplate(name, email, phone, message),
+    subject: `${requestType}: ${String(name).replace(/[\r\n]/g, " ")}`,
+    text: `Enquiry: ${requestType}\nName: ${name}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\n\nMessage:\n${message}`,
+    html: generateEmailTemplate(...[name, email, phone, message, requestType].map(escapeHtml)),
     replyTo: email,
   };
 
@@ -45,6 +49,10 @@ export async function POST(request) {
   try {
     const payload = await request.json();
     const { name, email, phone, message } = payload;
+    const requestType = payload.requestType || "Other enquiry";
+    if (!inquiryTypes.has(requestType)) {
+      return NextResponse.json({ success: false, message: "Please select a valid enquiry type." }, { status: 400 });
+    }
 
     if (!process.env.EMAIL_ADDRESS || !process.env.GMAIL_PASSKEY) {
       return NextResponse.json(
@@ -66,7 +74,7 @@ export async function POST(request) {
       );
     }
 
-    await sendEmail({ name, email, phone, message });
+    await sendEmail({ name, email, phone, message, requestType });
 
     return NextResponse.json(
       {

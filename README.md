@@ -1,42 +1,34 @@
-# My Developer Portfolio
+# Aman Kumar Portfolio
 
-This portfolio is built with Next.js App Router and includes an OpenAI-powered chatbot that answers as Aman Kumar.
+A custom Next.js portfolio with a portrait-led midnight and violet visual system, self-hosted Manrope typography, responsive layouts, Framer Motion animations, project filtering, project detail dialogs, and a floating portfolio assistant.
 
-## Folder Structure
-
-```text
-my-portfolio/
-├─ app/
-│  ├─ api/
-│  │  ├─ chat/route.js
-│  │  ├─ contact/route.js
-│  │  └─ data/route.js
-│  ├─ components/
-│  │  └─ homepage/
-│  │     └─ chatbot/index.jsx
-│  ├─ css/
-│  ├─ layout.js
-│  └─ page.js
-├─ public/
-├─ utils/
-│  └─ data/
-│     ├─ chatbot-data.js
-│     ├─ personal-data.js
-│     ├─ projects-data.js
-│     └─ skills.js
-├─ .env.example
-└─ package.json
-```
-
-## Chatbot Setup
-
-1. Install dependencies:
+## Run locally
 
 ```bash
 npm install
+npm run dev
 ```
 
-2. Create or update `my-portfolio/.env.local` with your keys:
+Open http://localhost:3000. If that port is occupied, use `npm run dev -- --port 3002`.
+
+For production, run `npm run build` followed by `npm run start`.
+
+## Customize
+
+- `app/components/premium-portfolio.jsx`: page sections, interactions, and project details.
+- `app/components/cinematic-hero.jsx`: staggered heading entrance, spring portrait tilt, magnetic links, and floating accents.
+- `app/css/elevated.scss`: the current visual direction and self-hosted typography.
+- `app/css/premium.scss`: shared responsive layout and component foundations.
+- `utils/data/personal-data.js`: profile, social links, contact details, and resume.
+- `utils/data/projects-data.js`: project summaries, tools, and live/source links.
+- `utils/data/experience.js` and `educations.js`: career and education.
+- `public/profile.png` and `public/resume/Aman_Kumar_CV.pdf`: portrait and CV.
+
+The AAA Fitness entry uses a real screenshot from the local project. Other gallery artwork is labeled as interface concepts. Website and app development availability is shown in the hero, enquiry section, and assistant context.
+
+## Contact and assistant setup
+
+Configure `.env.local` without committing secrets:
 
 ```env
 OPENAI_API_KEY=your_openai_api_key
@@ -46,23 +38,6 @@ GMAIL_PASSKEY=your_gmail_app_password
 NEXT_PUBLIC_GTM=
 ```
 
-3. Start the development server:
+The assistant opens from the bottom-right button and uses `/api/chat`. The contact form uses `/api/contact`. Both display loading states and failures without falsely reporting success. Actual delivery and AI responses depend on valid service credentials.
 
-```bash
-npm run dev
-```
-
-4. Open `http://localhost:3000` and scroll to the `AI Chatbot` section.
-
-## How It Works
-
-- `app/components/homepage/chatbot/index.jsx` renders the chatbot UI.
-- The frontend sends chat messages to `app/api/chat/route.js` using the Fetch API.
-- `app/api/chat/route.js` calls the OpenAI Responses API with portfolio-aware instructions.
-- The chatbot replies in a short, professional, friendly tone as Aman Kumar.
-
-## Notes
-
-- The chatbot uses your existing portfolio data for personal info and projects.
-- If `OPENAI_API_KEY` is missing, the chat route returns a clear configuration error.
-- Suggested questions, loading state, error handling, and a typing animation are included.
+Framer Motion powers section reveals, layout transitions during project filtering, spring-based interactions, scroll progress, and dialog/chat entrance and exit transitions. `MotionConfig` respects the device reduced-motion preference. The interface includes keyboard navigation, a skip link, project dialog focus management, native form validation, and reduced-motion support. Page content remains visible when JavaScript is unavailable.

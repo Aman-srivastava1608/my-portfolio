@@ -1,5 +1,5 @@
 export const chatbotData = {
-  availability: "Open to work",
+  availability: "Available for website and app development projects, including new builds and updates. Currently working at Koober Technology.",
   primarySkills: ["JavaScript", "Next.js", "Node.js", "MySQL"],
   suggestedQuestions: [
     "Tell me about yourself.",
